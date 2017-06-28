@@ -3,7 +3,7 @@ resources:
 - name: crud-operations on mongodb
   type: git
   source:
-    uri: https://github.com/vc4017/cf-sample-app-nodejs.git
+    uri: https://github.com/vc4017/crud-operations-on-mongodb.git
 
 - name: crud-operations on mongodb deploy
   type: cf
