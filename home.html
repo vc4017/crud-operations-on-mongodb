@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+       <style>
+body  {
+    background-image: url("images/1.jpg");
+    background-size: 80px 60px;
+    
+}
+</style>
+       
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body bgcolor="#ccfff">
+       
+    <marquee behavior="alternate"> <center><font color="pink" size="30">Employee Registration Form</font></center></marquee>
+ 
+       <form action="/api/Employee" method="post">
+           <table align="center">`
+               <tr>
+                   <td>
+                       <label size="5">Id:</label>
+                   </td>
+                   <td>
+                       <input type="text" name="ID" size="15"><br>
+                   </td>
+               <tr>
+               <tr>
+               <td>
+                   <label size="5">name:</label>
+               </td>
+               <td>
+                       <input type="text" name="NAME" size="15"><br>
+                   </td>
+               
+               
+               </tr>
+               
+              
+               <tr>
+                   <td>
+               <label size="5">Designation:</label>
+                   </td>
+                   <td>
+                       <select name="des">
+                           <option value="ceo">CEO</option>
+                           <option value="projectmanager">Project Manager</option>
+                           <option value="architect">Architect</option>
+                           <option value="hr">Hr</option>
+                           <option value="trainer">Trainer</option>
+                           
+                           <option value="teamlead">Team Lead</option>
+                           <option value="developer">Developer</option>
+                           
+                           
+                           
+                       </select>
+                   </td>
+               </tr>
+            
+            
+           <td><input type="submit" value="submit"> </td>
+            <td><a href=/api/update>update>update employees</a><br></td>
+           </table>
+           
+          
+           <td><input type="submit" value="submit"></td>
+           <td><a href=/api/remove>remove>remove employees</a><br></td>
+            </form>
+    </body>
+</html>
