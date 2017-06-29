@@ -1,6 +1,6 @@
 ---
 applications:
-- name: crud operations on mongodb
+- name: crud-operations-on-mongodb
   memory: 1G
   instances: 1
   random-route: true
