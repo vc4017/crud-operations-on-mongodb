@@ -1,7 +1,7 @@
 ---
 applications:
 - name: crud operations on mongodb
-  memory: 512M
+  memory: 1G
   instances: 1
   random-route: true
   command: node app.js
