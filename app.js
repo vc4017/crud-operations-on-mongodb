@@ -10,7 +10,7 @@ var users = require('./routes/users');
 
 var app = express();
 var Employee= require('./models/Employee');
-mongoose.connect('mongodb://localhost/EmployeeDetails');
+//mongoose.connect('mongodb://localhost/EmployeeDetails');
 var db = mongoose.connection;
 
 // view engine setup
