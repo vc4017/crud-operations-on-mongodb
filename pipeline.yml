@@ -1,11 +1,16 @@
 ---
+groups:
+- name: main
+  jobs:
+  - job-deploy-app
 resources:
-- name: crud-operations on mongodb
+- name: Node-js-app
   type: git
   source:
     uri: https://github.com/vc4017/crud-operations-on-mongodb.git
+    branch: master
 
-- name: crud-operations on mongodb deploy
+- name: cf-env
   type: cf
   source:
     api: https://api.run.pivotal.io
@@ -16,11 +21,15 @@ resources:
     skip_cert_check: true
 
 jobs:
+
+
+
+
 - name: job-deploy-app
   serial: true
   plan:
-  - {get: crud-operations on mongodb, trigger: true}
-  - put: crud-operations on mongodb deploy
+  - {get: Node-js-app, trigger: true}
+  - put: cf-env
     params:
-      manifest: crud-operations on mongodb/manifest.yml
-      path: crud-operations on mongodb
+      manifest: Node-js-app/manifest.yml
+      path: Node-js-app
