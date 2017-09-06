@@ -67,8 +67,8 @@ jobs:
 - name: deploy-job
   serial: true
   plan:
-  - {get: basic-express-site-2016, trigger: true}
+  - {get: crud, trigger: true}
   - put: cf-env
     params:
-      manifest: basic-express-site-2016/manifest.yml
-      path: basic-express-site-2016
+      manifest: crud-operations-on-mongodb/manifest.yml
+      path: crud-operations-on-mongodb
