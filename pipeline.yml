@@ -2,9 +2,11 @@
 groups:
 - name: main
   jobs:
-  - job-deploy-app
+  - install
+  - test
+  - deploy-job
 resources:
-- name: Node-js-app
+- name: crud
   type: git
   source:
     uri: https://github.com/vc4017/crud-operations-on-mongodb.git
@@ -22,14 +24,51 @@ resources:
 
 jobs:
 
+- name: install
+  serial: true
+  disable_manual_trigger: false
+  plan:
+      - get: crud
+        trigger: true
 
+      - task: npm-install
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: {repository: node, tag: "6" }
+          inputs:
+            - name: crud
+              path: .
+          run:
+            path: npm
+            args: [ install ]
+            
+- name: test
+  serial: true
+  disable_manual_trigger: false
+  plan:
+      - get: crud
+        trigger: true
+        
+      - task: npm-test
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: {repository: node, tag: "6" }
+          inputs:
+            - name: crud
+              path: .
+          run:
+            path: npm
+            args: [ install-test ]
 
-
-- name: job-deploy-app
+- name: deploy-job
   serial: true
   plan:
-  - {get: Node-js-app, trigger: true}
+  - {get: basic-express-site-2016, trigger: true}
   - put: cf-env
     params:
-      manifest: Node-js-app/manifest.yml
-      path: Node-js-app
+      manifest: basic-express-site-2016/manifest.yml
+      path: basic-express-site-2016
